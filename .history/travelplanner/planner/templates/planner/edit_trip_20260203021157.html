@@ -1,0 +1,15 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Edit Trip{% endblock %}
+
+{% block content %}
+<h1>Edit Trip</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Update Trip</button>
+</form>
+
+<a href="{% url 'trips' %}">⬅ Back to Trips</a>
+{% endblock %}

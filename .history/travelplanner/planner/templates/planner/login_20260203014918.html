@@ -1,0 +1,12 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Login - TravelPlanner{% endblock %}
+
+{% block content %}
+<h1>Login</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Login</button>
+</form>
+{% endblock %}

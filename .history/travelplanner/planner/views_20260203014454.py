@@ -1,0 +1,22 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import TripForm
+from .models import Trip
+from .models import Destination
+
+def home(request):
+    return render(request, 'planner/home.html')
+
+def destinations(request):
+    all_destinations = Destination.objects.all()
+    return render(request, 'planner/destinations.html', {'destinations': all_destinations})
+
+@login_required
+def trips(request):
+   if request.method == 'POST':
+        form = TripForm(request.POST)
+    return render(request, 'planner/trips.html')
+def login_view(request):
+    # Logic for user login
+    return render(request, 'planner/login.html')
+# Create your views here.

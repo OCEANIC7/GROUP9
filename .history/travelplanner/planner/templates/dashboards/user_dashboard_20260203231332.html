@@ -1,0 +1,47 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}User Dashboard - TravelPlanner{% endblock %}
+
+{% block content %}
+<div style="padding:50px 20px; max-width:1000px; margin:auto; background: linear-gradient(120deg, #f0f8ff, #e6f2ff); border-radius:15px; text-align:center;">
+
+    <h1 style="color:#1e90ff; font-size:3em; margin-bottom:30px;">👤 Welcome, {{ user.username }}!</h1>
+    <p style="color:#555; font-size:1.2em; margin-bottom:40px;">Manage your trips and explore amazing destinations in Tanzania.</p>
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+
+        <!-- Trips Card -->
+        <div style="background:#fff; width:250px; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition:transform 0.3s;">
+            <h2 style="color:#1e90ff;">🗺️ My Trips</h2>
+            <p style="color:#555;">View and manage all your planned trips.</p>
+            <a href="{% url 'trips' %}" style="display:inline-block; margin-top:15px; padding:10px 20px; background:#1e90ff; color:white; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s;">Go</a>
+        </div>
+
+        <!-- Destinations Card -->
+        <div style="background:#fff; width:250px; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition:transform 0.3s;">
+            <h2 style="color:#1e90ff;">🌍 Destinations</h2>
+            <p style="color:#555;">Explore beautiful destinations and plan your next adventure.</p>
+            <a href="{% url 'destinations' %}" style="display:inline-block; margin-top:15px; padding:10px 20px; background:#1e90ff; color:white; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s;">Explore</a>
+        </div>
+
+        <!-- Logout Card -->
+        <div style="background:#fff; width:250px; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition:transform 0.3s;">
+            <h2 style="color:#dc3545;">🚪 Logout</h2>
+            <p style="color:#555;">Securely log out from your account.</p>
+            <a href="{% url 'logout' %}" style="display:inline-block; margin-top:15px; padding:10px 20px; background:#dc3545; color:white; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s;">Logout</a>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    div:hover {
+        transform: translateY(-5px);
+    }
+    a:hover {
+        opacity:0.85;
+    }
+</style>
+{% endblock %}
+

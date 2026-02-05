@@ -1,0 +1,11 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Destinations - TravelPlanner{% endblock %}
+
+{% block content %}
+<h1>Explore Destinations</h1>
+
+<div style="display:flex; flex-wrap: wrap; justify-content: center;">
+    {% for dest in destinations %}
+<p>Here you can browse and discover amazing destinations.</p>
+{% endblock %}

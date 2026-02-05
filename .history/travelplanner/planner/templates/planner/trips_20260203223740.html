@@ -1,0 +1,81 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Trips - TravelPlanner{% endblock %}
+
+{% block content %}
+<div style="padding:40px; max-width:1000px; margin:auto;">
+
+    <h1 style="text-align:center; color:#1e90ff; margin-bottom:30px;">Your Trips</h1>
+
+    <!-- Add New Trip Form -->
+    <h2 style="color:#333; margin-bottom:20px;">Add a New Trip</h2>
+    <div style="max-width:500px; margin:auto; background:#f8f9fa; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="width:100%; padding:12px; background:#1e90ff; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; transition:0.3s;">
+                Add Trip
+            </button>
+        </form>
+    </div>
+
+    <!-- Planned Trips -->
+    <h2 style="color:#333; margin:40px 0 20px 0; text-align:center;">Planned Trips</h2>
+
+    {% if trips %}
+    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+        {% for trip in trips %}
+        <div style="width:280px; border-radius:15px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.2); transition:transform 0.3s; background:#fff; padding:15px;">
+
+            <!-- Trip Destination -->
+            <h3 style="margin-top:0; color:#1e90ff;">
+                📍 <a href="{% url 'trip_detail' trip.id %}" style="text-decoration:none; color:#1e90ff;">
+                    {{ trip.destination.name }}
+                </a>
+            </h3>
+
+            <!-- Dates -->
+            <div style="margin-bottom:10px; color:#555; font-size:0.95em;">
+                🗓 {{ trip.start_date|date:"M d, Y" }} → {{ trip.end_date|date:"M d, Y" }}
+            </div>
+
+            <!-- Notes -->
+            {% if trip.notes %}
+            <p style="color:#555; font-size:0.9em; margin-bottom:15px;">
+                📝 {{ trip.notes|truncatewords:15 }}
+            </p>
+            {% endif %}
+
+            <!-- Actions -->
+            <div style="display:flex; justify-content:space-between;">
+                <a href="{% url 'edit_trip' trip.id %}" style="padding:6px 12px; background:#ffc107; color:white; border-radius:5px; text-decoration:none; font-size:0.9em; transition:0.3s;">
+                    ✏️ Edit
+                </a>
+                <a href="{% url 'delete_trip' trip.id %}" style="padding:6px 12px; background:#dc3545; color:white; border-radius:5px; text-decoration:none; font-size:0.9em; transition:0.3s;">
+                    🗑️ Delete
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="text-align:center; color:#555; margin-top:20px;">You have no trips yet.</p>
+    {% endif %}
+
+</div>
+
+<!-- Hover Effects -->
+<style>
+    .trip-card:hover {
+        transform: translateY(-5px);
+    }
+    a:hover {
+        opacity:0.85;
+    }
+    button:hover {
+        opacity:0.85;
+    }
+</style>
+
+{% endblock %}

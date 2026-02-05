@@ -1,0 +1,37 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Trips - TravelPlanner{% endblock %}
+
+{% block content %}
+<h1>Your Trips</h1>
+
+<h2>Add a New Trip</h2>
+<form method="POST" style="margin-bottom:30px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Add Trip</button>
+</form>
+
+<h2>Planned Trips</h2>
+<div>
+    {% if trips %}
+        <ul>
+            {% for trip in trips %}
+                <li>
+                    <strong>{{ trip.destination.name }}, {{ trip.destination.country }}</strong> | 
+                    {{ trip.start_date }} to {{ trip.end_date }} 
+                    {% if trip.notes %} | Notes: {{ trip.notes }} {% endif %}
+                
+                <a href="{% url 'edit_trip' trip.id %}">✏️ Edit</a> |
+        <a href="{% url 'delete_trip' trip.id %}"
+           onclick="return confirm('Delete this trip?');">🗑️ Delete</a>
+             
+                
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no planned trips yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

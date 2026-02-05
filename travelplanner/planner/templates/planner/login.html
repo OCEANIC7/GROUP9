@@ -1,0 +1,41 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Login - TravelPlanner{% endblock %}
+
+{% block content %}
+<div style="display:flex; justify-content:center; align-items:center; min-height:80vh; background: linear-gradient(120deg, #f0f8ff, #e6f2ff); padding:20px;">
+
+    <div style="background:#fff; padding:40px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.15); max-width:400px; width:100%;">
+        
+        <h1 style="text-align:center; color:#1e90ff; margin-bottom:30px;">Login</h1>
+
+        {% if form.errors %}
+        <p style="color:red; text-align:center; margin-bottom:20px;">
+            Please correct the errors below.
+        </p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <button type="submit" style="width:100%; padding:12px; background:#1e90ff; color:white; border:none; border-radius:8px; font-weight:bold; font-size:1em; cursor:pointer; transition:0.3s; margin-top:10px;">
+                🔐 Login
+            </button>
+        </form>
+
+        <p style="text-align:center; margin-top:15px; color:#555;">
+            Don't have an account? <a href="{% url 'register' %}" style="color:#1e90ff; text-decoration:none;">Register here</a>
+        </p>
+
+    </div>
+</div>
+
+<!-- Hover effect for button -->
+<style>
+    button:hover {
+        opacity:0.85;
+    }
+</style>
+
+{% endblock %}

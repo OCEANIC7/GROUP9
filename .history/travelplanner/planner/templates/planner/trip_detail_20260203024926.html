@@ -1,0 +1,32 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Trip Details{% endblock %}
+
+{% block content %}
+<div class="trip-card" style="max-width: 600px; margin: auto;">
+    <h1>📍 {{ trip.destination.name }}</h1>
+    <p><strong>Country:</strong> {{ trip.destination.country }}</p>
+
+    <p class="trip-dates">
+        🗓 {{ trip.start_date|date:"F d, Y" }}
+        →
+        {{ trip.end_date|date:"F d, Y" }}
+    </p>
+
+    {% if trip.notes %}
+        <p><strong>Notes:</strong></p>
+        <p>{{ trip.notes }}</p>
+    {% else %}
+        <p><em>No notes added.</em></p>
+    {% endif %}
+
+    <hr>
+
+    <div class="trip-actions">
+        <a href="{% url 'edit_trip' trip.id %}" class="edit">✏️ Edit</a>
+        <a href="{% url 'delete_trip' trip.id %}" class="delete">🗑️ Delete</a>
+        <br><br>
+        <a href="{% url 'trips' %}">⬅ Back to Trips</a>
+    </div>
+</div>
+{% endblock %}

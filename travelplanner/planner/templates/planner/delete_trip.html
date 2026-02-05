@@ -1,0 +1,24 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Delete Trip{% endblock %}
+
+{% block content %}
+<h1>Confirm Delete</h1>
+
+<p>
+    Are you sure you want to delete the trip to
+    <strong>{{ trip.destination.name }}</strong>
+    from <strong>{{ trip.start_date }}</strong>
+    to <strong>{{ trip.end_date }}</strong>?
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="button" style="background-color: red;">
+        Yes, Delete
+    </button>
+    <a href="{% url 'trips' %}" class="button" style="background-color: gray;">
+        Cancel
+    </a>
+</form>
+{% endblock %}

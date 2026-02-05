@@ -1,0 +1,20 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Destinations - TravelPlanner{% endblock %}
+
+{% block content %}
+<h1>Explore Destinations</h1>
+<div style="display:flex; flex-wrap: wrap; justify-content: center;">
+    {% for dest in destinations %}
+    <div style="border:1px solid #ccc; margin:10px; padding:10px; width:250px; border-radius:10px;">
+        {% if dest.image_url %}
+        <img src="{{ dest.image_url }}" alt="{{ dest.name }}" style="width:100%; border-radius:10px;">
+        {% endif %}
+        <h3>{{ dest.name }}, {{ dest.country }}</h3>
+        <p>{{ dest.description|truncatewords:20 }}</p>
+    </div>
+    {% empty %}
+    <p>No destinations available yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

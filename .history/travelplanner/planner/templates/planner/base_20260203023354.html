@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TravelPlanner{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f8ff; margin: 0; padding: 0; }
+        nav { background-color: #1e90ff; padding: 10px; }
+        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        nav a:hover { color: #ffd700; }
+        .container { padding: 50px; text-align: center; }
+        h1 { color: #1e90ff; }
+        footer { background-color: #1e90ff; color: #fff; padding: 10px; position: fixed; bottom: 0; width: 100%; }
+        a.button { text-decoration: none; color: #fff; background-color: #1e90ff; padding: 10px 20px; border-radius: 5px; }
+        a.button:hover { background-color: #104e8b; }
+        
+        .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.trip-card {
+    background: white;
+    width: 280px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.trip-card h3 {
+    margin-top: 0;
+    color: #1e90ff;
+}
+
+.trip-dates {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.trip-actions a {
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.trip-actions a.edit {
+    color: green;
+}
+
+.trip-actions a.delete {
+    color: red;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'destinations' %}">Destinations</a>
+        <a href="{% url 'trips' %}">Trips</a>
+        <a href="{% url 'login' %}">Login</a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        &copy; 2026 TravelPlanner. All rights reserved.
+    </footer>
+</body>
+</html>
