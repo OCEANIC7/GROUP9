@@ -1,0 +1,35 @@
+{% extends "planner/base.html" %}
+{% block title %}Home - TravelPlanner{% endblock %}
+
+{% block content %}
+<div style="text-align:center; padding:50px; background-color:#f0f8ff;">
+    <h1 style="color:#1e90ff; font-size:3em;">Welcome to TravelPlanner</h1>
+    <p style="font-size:1.2em; max-width:700px; margin:auto; color:#333;">
+        Your journey starts here! Plan trips, explore destinations, and organize your adventures.
+    </p>
+    <a href="{% url 'login' %}" style="display:inline-block; margin:20px 0; 
+        text-decoration:none; color:#ffffff; background-color:#1e90ff; 
+        padding:12px 25px; border-radius:5px; font-weight:bold; font-size:1em;">
+        Start Planning
+    </a>
+
+    <!-- Images Section -->
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:20px; margin-top:40px;">
+        <div style="flex:1 1 200px; max-width:300px;">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=60" 
+                 alt="Beach" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2);">
+            <p style="margin-top:10px; color:#555;">Relax on beautiful beaches</p>
+        </div>
+        <div style="flex:1 1 200px; max-width:300px;">
+            <img src="https://images.unsplash.com/photo-1491557345352-5929e343eb89?auto=format&fit=crop&w=500&q=60" 
+                 alt="Mountains" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2);">
+            <p style="margin-top:10px; color:#555;">Explore scenic mountains</p>
+        </div>
+        <div style="flex:1 1 200px; max-width:300px;">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=60" 
+                 alt="City" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2);">
+            <p style="margin-top:10px; color:#555;">Discover vibrant cities</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
